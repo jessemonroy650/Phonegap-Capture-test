@@ -22,7 +22,7 @@
 		captureVideo(videoCallback);
 	}
 	function videoCallback(filename) {
-		document.getElementById('videoFilename').innerHTML = filename;
+		document.getElementById('videoFilename').innerHTML = JSON.stringify(filename);
 	}
 	//
 	// Get rid of 300ms delay 
