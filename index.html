@@ -18,8 +18,8 @@
     <script type="text/javascript" charset="utf-8" src="js/zepto-1.1.6.js"></script>
     <script type="text/javascript">
 	function onButtonClick() {
-		alert("button clicked.");
-		//captureVideo(videoCallback);
+		//alert("button clicked.");
+		captureVideo(videoCallback);
 	}
 	function videoCallback(filename) {
 		document.getElementById('videoFilename').innerHTML = filename;
@@ -31,7 +31,7 @@
 	document.addEventListener("deviceready", onDeviceReady, false);
 	//
 	function onDeviceReady() {
-		alert("device ready.");
+		//alert("device ready.");
 		// hide Exit button. They don't have one on iOS devices.
 		if (device.platform === "iOS") {
 			//alert("got iOS");
@@ -44,7 +44,7 @@
 	}
 	//
 	function onLoad() {
-		alert("body loaded.");
+		//alert("body loaded.");
 	}
     </script>
 </head>
