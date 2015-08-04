@@ -1,40 +1,59 @@
 /*
- *	Date: 2015-05-23
+ *    Date: 2015-05-23
  */
+function gapCapture() {
 
-var captureCallback = {};
+	var self = {};
 
-var ErrorCode = [
-"The camera or microphone failed to capture image or sound.",
-"The camera or audio capture application is currently serving another capture request.",
-"Invalid use of the API (e.g., the value of limit is less than one).",
-"The user exits the camera or audio capture application before capturing anything.",
-"The requested capture operation is not supported."
-];
+    self.captureAudioCallback = null;
+    self.captureVideoCallback = null;
+    self.captureImageCallback = null;
 
-	function captureSuccess(mediaFiles) {
-		captureCallback(mediaFiles[0]);
-/*        var i, len;
-        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-            uploadFile(mediaFiles[i]);
-        }
-*/
-    }
+    self. ErrorCode = [
+        "The camera or microphone failed to capture image or sound.",
+        "The camera or audio capture application is currently serving another capture request.",
+        "Invalid use of the API (e.g., the value of limit is less than one).",
+        "The user exits the camera or audio capture application before capturing anything.",
+        "The requested capture operation is not supported."
+        ];
 
     // Called if something bad happens.
     //
-    function captureError(error) {
-		alert(ErrorCode[error.code]);
-/*        var msg = 'An error occurred during capture: ' + error.code;
-        navigator.notification.alert(msg, null, 'Uh oh!');
-*/
+    self.captureError = function(error) {
+        alert(self.ErrorCode[error.code]);
     }
-
-    // A button will call this function
     //
-    function captureVideo(callback) {
-		captureCallback = callback;
+    self.captureAudio = function (callback) {
+        self.captureAudioCallback = callback;
         // Launch device video recording application,
         // allowing user to capture 1 video clips
-        navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1});
+        navigator.device.capture.captureAudio(function(mediaFiles) {
+                self.captureAudioCallback(mediaFiles[0]);
+        },
+        self.captureError,
+        {limit: 1, duration: 10});
     }
+    //
+    self.captureVideo = function (callback) {
+        self.captureVideoCallback = callback;
+        // Launch device video recording application,
+        // allowing user to capture 1 video clips
+        navigator.device.capture.captureVideo(function(mediaFiles) {
+                self.captureVideoCallback(mediaFiles[0]);
+        },
+        self.captureError,
+        {limit: 1, duration: 10});
+    }
+    //
+    self.captureImage = function (callback) {
+        self.captureImageCallback = callback;
+        // Launch device video recording application,
+        // allowing user to capture 1 video clips
+        navigator.device.capture.captureImage(function(mediaFiles) {
+                self.captureImageCallback(mediaFiles[0]);
+        },
+        self.captureError,
+        {limit: 1});
+    }
+
+};
