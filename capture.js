@@ -49,11 +49,13 @@ function gapCapture () {
         self.captureImageCallback = callback;
         // Launch device video recording application,
         // allowing user to capture 1 video clips
+        console.log('calling captureImage');
         capture.captureImage(function(mediaFiles) {
                 self.captureImageCallback(mediaFiles[0]);
         },
         self.captureError,
         {limit: 1});
+        console.log('done with captureImage');
     }
 
 };
