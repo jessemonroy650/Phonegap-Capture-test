@@ -58,4 +58,5 @@ function gapCapture () {
         console.log('done with captureImage');
     }
 
+	return self;
 };
