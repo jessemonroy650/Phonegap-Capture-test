@@ -27,7 +27,7 @@ function gapCapture () {
         self.captureAudioCallback = callback;
         // Launch device video recording application,
         // allowing user to capture 1 video clips
-        capture.captureAudio(function(mediaFiles) {
+        navigator.device.capture.captureAudio(function(mediaFiles) {
                 self.captureAudioCallback(mediaFiles[0]);
         },
         self.captureError,
@@ -38,7 +38,7 @@ function gapCapture () {
         self.captureVideoCallback = callback;
         // Launch device video recording application,
         // allowing user to capture 1 video clips
-        capture.captureVideo(function(mediaFiles) {
+        navigator.device.capture.captureVideo(function(mediaFiles) {
                 self.captureVideoCallback(mediaFiles[0]);
         },
         self.captureError,
@@ -50,7 +50,7 @@ function gapCapture () {
         // Launch device video recording application,
         // allowing user to capture 1 video clips
         console.log('calling captureImage');
-        capture.captureImage(function(mediaFiles) {
+        navigator.device.capture.captureImage(function(mediaFiles) {
                 self.captureImageCallback(mediaFiles[0]);
         },
         self.captureError,
