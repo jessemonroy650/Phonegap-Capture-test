@@ -1,15 +1,15 @@
 /*
  *    Date: 2015-05-23
  */
-function gapCapture() {
+function gapCapture () {
 
-	var self = {};
+    var self = {};
 
     self.captureAudioCallback = null;
     self.captureVideoCallback = null;
     self.captureImageCallback = null;
 
-    self. ErrorCode = [
+    self.ErrorCode = [
         "The camera or microphone failed to capture image or sound.",
         "The camera or audio capture application is currently serving another capture request.",
         "Invalid use of the API (e.g., the value of limit is less than one).",
@@ -27,7 +27,7 @@ function gapCapture() {
         self.captureAudioCallback = callback;
         // Launch device video recording application,
         // allowing user to capture 1 video clips
-        navigator.device.capture.captureAudio(function(mediaFiles) {
+        capture.captureAudio(function(mediaFiles) {
                 self.captureAudioCallback(mediaFiles[0]);
         },
         self.captureError,
@@ -38,7 +38,7 @@ function gapCapture() {
         self.captureVideoCallback = callback;
         // Launch device video recording application,
         // allowing user to capture 1 video clips
-        navigator.device.capture.captureVideo(function(mediaFiles) {
+        capture.captureVideo(function(mediaFiles) {
                 self.captureVideoCallback(mediaFiles[0]);
         },
         self.captureError,
@@ -49,7 +49,7 @@ function gapCapture() {
         self.captureImageCallback = callback;
         // Launch device video recording application,
         // allowing user to capture 1 video clips
-        navigator.device.capture.captureImage(function(mediaFiles) {
+        capture.captureImage(function(mediaFiles) {
                 self.captureImageCallback(mediaFiles[0]);
         },
         self.captureError,
